@@ -6,7 +6,7 @@
 /*   By: jdias-mo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:09:21 by jdias-mo          #+#    #+#             */
-/*   Updated: 2022/01/25 12:26:40 by jdias-mo         ###   ########.fr       */
+/*   Updated: 2022/02/07 22:38:35 by jdias-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	main(int ac, char **av)
 	t_list		*b;
 
 	if (ac <= 1)
-		return (0);
+		return (1);
 	else if (ft_check_error(ac, av))
 		write(2, "Error\n", 6);
 	else

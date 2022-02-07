@@ -6,7 +6,7 @@
 /*   By: jdias-mo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 00:52:56 by jdias-mo          #+#    #+#             */
-/*   Updated: 2022/01/24 16:01:20 by jdias-mo         ###   ########.fr       */
+/*   Updated: 2022/02/07 22:20:01 by jdias-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_lower_up(t_list **a, t_list **b, t_list **aux)
 
 void	ft_push_low(t_list **a, t_list **b, t_list **aux, t_big big)
 {
-	while (big.index < ft_list_size(*aux))
+	while (big.index < ft_list_size(*aux) - 1)
 	{
 		while (ft_list_size(*b) < big.index)
 		{
@@ -55,29 +55,31 @@ void	ft_push_low(t_list **a, t_list **b, t_list **aux, t_big big)
 
 void	ft_push_higher(t_list **a, t_list **b, t_list **aux)
 {
+	t_list	*tmp;
+
+	tmp = *aux;
 	while (*b)
 	{
 		if (ft_find_pos(*aux, *b) == 2 && ft_find_pos((*aux)->next, *b) == 1)
 		{
 			ft_do_swap(a, b, 'b');
 			ft_do_push(a, b, 'a');
-			*aux = (*aux)->next;
 		}
 		else if (ft_find_pos(*aux, *b) <= (ft_list_size(*b) / 2) + 1)
 		{
 			while ((*b)->content != (*aux)->content)
 				ft_do_rotate(a, b, 'b');
 			ft_do_push(a, b, 'a');
-			*aux = (*aux)->next;
 		}
 		else
 		{
 			while ((*b)->content != (*aux)->content)
 				ft_do_reverse_rotate(a, b, 'b');
 			ft_do_push(a, b, 'a');
-			*aux = (*aux)->next;
 		}
+		*aux = (*aux)->next;
 	}
+	*aux = tmp;
 }
 
 int	ft_find_low(t_list *a, t_list *aux, int index)

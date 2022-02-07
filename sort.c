@@ -6,7 +6,7 @@
 /*   By: jdias-mo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 13:07:22 by jdias-mo          #+#    #+#             */
-/*   Updated: 2022/01/24 15:09:53 by jdias-mo         ###   ########.fr       */
+/*   Updated: 2022/02/07 22:24:24 by jdias-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,14 @@ void	ft_sort_3(t_list **a, t_list **b)
 void	ft_sort_small(t_list **a, t_list **b)
 {
 	t_list	*aux;
+	t_list	*tmp;
 	int		i;
 
 	i = 0;
 	aux = NULL;
 	ft_clone_list(*a, &aux);
 	ft_sort_list(&aux);
+	tmp = aux;
 	if ((*a)->next->next && ft_check_sort((*a)->next) && (*a)->next->content
 		< (*a)->content && (*a)->content < (*a)->next->next->content)
 		ft_do_swap(a, b, 'a');
@@ -50,12 +52,9 @@ void	ft_sort_small(t_list **a, t_list **b)
 		i++;
 	}
 	ft_sort_3(a, b);
-	while (i)
-	{
+	while (i--)
 		ft_do_push(a, b, 'a');
-		i--;
-	}
-	ft_clear_list(aux);
+	ft_clear_list(tmp);
 }
 
 void	ft_sort_100(t_list **a, t_list **b)

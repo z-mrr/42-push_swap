@@ -6,7 +6,7 @@
 /*   By: jdias-mo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 13:07:22 by jdias-mo          #+#    #+#             */
-/*   Updated: 2022/02/09 14:50:36 by jdias-mo         ###   ########.fr       */
+/*   Updated: 2022/02/09 14:55:07 by jdias-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	ft_sort_100(t_list **a, t_list **b)
 	aux_b = NULL;
 	ft_clone_list(*a, &aux_a);
 	ft_sort_list(&aux_a);
-	big.partes = 4;
+	big.partes = 5;
 	big.index = ft_list_size(aux_a) / big.partes;
 	ft_push_low(a, b, &aux_a, big);
 	ft_sort_small(a, b);
